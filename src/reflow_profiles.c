@@ -9,26 +9,17 @@
 
 #include "reflow_profiles.h"
 
-#define RAMPTEST
-#define PIDTEST
+//#define RAMPTEST
+//#define PIDTEST
 
 extern uint8_t graphbmp[];
 
-// Amtech 4300 63Sn/37Pb leaded profile
-static const profile am4300profile = {
-	"4300 63SN/37PB", {
-		 50, 50, 50, 60, 73, 86,100,113,126,140,143,147,150,154,157,161, // 0-150s
-		164,168,171,175,179,183,195,207,215,207,195,183,168,154,140,125, // Adjust peak from 205 to 220C
-		111, 97, 82, 68, 54,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0  // 320-470s
-	}
-};
-
-// NC-31 low-temp lead-free profile
-static const profile nc31profile = {
-	"NC-31 LOW-TEMP LF", {
-		 50, 50, 50, 50, 55, 70, 85, 90, 95,100,102,105,107,110,112,115, // 0-150s
-		117,120,122,127,132,138,148,158,160,158,148,138,130,122,114,106, // Adjust peak from 158 to 165C
-		 98, 90, 82, 74, 66, 58,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0  // 320-470s
+// CHIPQUIK TS391LT50 low-temp lead-free profile
+static const profile ts391lt50profile = {
+	"CHIPQUIK TS391LT50", {
+		 50, 50, 50, 50, 50, 58, 66, 74, 82, 90, 94, 99,103,107,111,116, // 0-150s
+		120,124,130,133,135,138,147,156,165,165,156,147,138,131,124,117, // 160-310s
+		110,103, 96, 89, 82, 75, 68, 61, 54,  0,  0,  0,  0,  0,  0,  0  // 320-470s
 	}
 };
 
@@ -70,9 +61,8 @@ static ramprofile ee1 = { "CUSTOM #1" };
 static ramprofile ee2 = { "CUSTOM #2" };
 
 static const profile* profiles[] = {
+	&ts391lt50profile,
 	&syntechlfprofile,
-	&nc31profile,
-	&am4300profile,
 #ifdef RAMPTEST
 	&rampspeed_testprofile,
 #endif
