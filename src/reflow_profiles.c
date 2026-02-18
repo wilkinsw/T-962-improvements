@@ -17,9 +17,33 @@ extern uint8_t graphbmp[];
 // CHIPQUIK TS391LT50 low-temp lead-free profile
 static const profile ts391lt50profile = {
 	"CHIPQUIK TS391LT50", {
-		 50, 50, 50, 50, 50, 58, 66, 74, 82, 90, 94, 99,103,107,111,116, // 0-150s
-		120,124,130,133,135,138,147,156,165,165,156,147,138,131,124,117, // 160-310s
-		110,103, 96, 89, 82, 75, 68, 61, 54,  0,  0,  0,  0,  0,  0,  0  // 320-470s
+		// PREHEAT: Target 90°C
+		 50, 50, 55,	// 0 - 30s
+		 60, 65, 70,	// 30 - 60s
+		 75, 80, 85,	// 60 - 90s
+		 90, 90, 90,	// 90 - 120s
+
+		// SOAK: Target 130°C, then hold/gentle rise
+		 95, 98,102,	// 120 - 150s
+		106,110,114,	// 150 - 180s
+		118,122,126,	// 180 - 210s
+		130,130,130,	// 210 - 240s
+		132,134,135,	// 240 - 270s
+		136,137,138,	// 270 - 300s
+
+		// RAMP TO PEAK: Enter liquidus at 138°C
+		145,152,158,	// 300 - 330s
+
+		// PEAK: Hit 165°C, brief hold
+		165,165,165,	// 330-360s
+
+		// CONTROLLED COOLDOWN: Exit liquidus at 138°C
+		158,152,145,	// 360-390s
+
+		// RAPID COOLDOWN: Below liquidus, can cool faster
+		138,130,120,	// 390-420s
+		108, 95, 82,	// 420-450s
+		 68, 55,  0,	// 450-480s
 	}
 };
 
