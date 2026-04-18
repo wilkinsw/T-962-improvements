@@ -36,14 +36,14 @@ static const profile ts391lt50profile = {
 
 		// PEAK: Hit 165°C, brief hold
 		165,165,165,	// 330-360s
+		165,165,165,	// 360-390s
 
 		// CONTROLLED COOLDOWN: Exit liquidus at 138°C
-		158,152,145,	// 360-390s
+		158,152,145,	// 390-420s
 
 		// RAPID COOLDOWN: Below liquidus, can cool faster
-		138,130,120,	// 390-420s
-		108, 95, 82,	// 420-450s
-		 68, 55,  0,	// 450-480s
+		137,117, 97,	// 420-450s
+		77, 57,  0,     // 450-480s
 	}
 };
 
